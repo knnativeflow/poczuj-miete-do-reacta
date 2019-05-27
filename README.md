@@ -1,6 +1,8 @@
 # Projekt aplikacji warsztatowej
 ![Spotkanie 1](https://img.shields.io/static/v1.svg?label=Spotkanie&message=1&color=9cf)
-![wersja 1.0](https://img.shields.io/badge/Wersja%20projektu-1.0-lightgrey.svg)
+![wersja 1.01](https://img.shields.io/badge/Wersja%20projektu-1.01-lightgrey.svg)
+
+W razie pytań lub potrzeby wyjaśnienia, któregoś fragmentu kodu można otworzyć issue na githubie lub pisać na [fanpage](https://www.facebook.com/knnativeflow). Przy zmianach kodu/wyjaśnień będzie aktualizowana wersja projektu :)  
 
 ## Jak zacząć?
 
