@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Projekt aplikacji warsztatowej
+![Spotkanie 1](https://img.shields.io/static/v1.svg?label=Spotkanie&message=1&color=9cf)
+![wersja 1.0](https://img.shields.io/badge/Wersja%20projektu-1.0-lightgrey.svg)
 
-## Available Scripts
+## Jak zacząć?
 
-In the project directory, you can run:
+Najprostszym sposobem wystartowania projektu w React jest wygenerowanie go przy pomocy [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm start`
+## Jak uruchomić projekt?
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Po stworzeniu projektu do naszej dyspozycji jest kilka komend (możemy je znaleźć między innymi w pliku `package.json`).
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- `npm install` - instaluje potrzebne paczki (według listy z `package.json`)
+- `npm run start` - uruchamia projekt w trybie developerskim, projekt jest dostępny pod adresem [http://localhost:3000](http://localhost:3000)
+- `npm run build` - tworzy build produkcyjny do wrzucenia na docelowy hosting
+- `npm run eject` - **raz użyte nie może zostać cofnięte** rozpakowuje `react-scripts` oddając wszystkie pliki konfiguracyjne do naszej dyspozycji
 
-### `npm test`
+## Struktura wygenerowanego projektu
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Projekt składa się z kilku plików:
+- `package.json` - plik z konfiguracją, zawiera listę zależności (aktualizuje się sama przy instalowaniu paczek); listę skryptów, które m.in. pozwalają uruchomić aplikację; informacje konfiguracyjne do rzeczy typu linter;
+- folder `public` - zawiera m.in. plik `index.html`, do którego wstrzykiwane są style i skrypty
+- folder `src` - jest głównym folderem zawierającym pliki dotyczące projektu (skrypty, komponenty, style)
+- plik `package-lock.json` - nie do modyfikacji, zawiera drzewo zależności instalowanych paczek npm
+- folder `node_modules` - zawiera pobrane paczki npm; generuje się sam po użyciu `npm install`
 
-### `npm run build`
+## Pliki źródłowe
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+W folderze `src` tworzymy nowe komponenty i ich style. Można dowolnie zagnieżdżać foldery, aby ułatwić sobie organizacje w projekcie. Plik `index.js` jest plikiem, od którego wszystko się zaczyna i z którego zaczyna się "podróż" [webpacka](https://webpack.js.org/) łączącego wszystkie pliki, wstrzykującego rzeczy do `index.html` i sprawiającego, że przeglądarka wie co i jak.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## JavaScript i React - tipy
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Można pisać kod zarówno ze średnikami jak i bez nich
+- [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) - obiekty, na których bardzo często sie operuje w JSie
+- Często można się spotkać z [dekonstrukcją](https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Operatory/Destructuring_assignment), która ułatwia wyciąganie elmentów z obiektów `const { a } = { a: 'wartosc', b: 312 }`
+- Warto zapoznać się z funkcjami takimi jak [`map`](https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Obiekty/Array/map) i [`filter`](https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Obiekty/Array/filter)
+- [Arrow functions](https://developer.mozilla.org/pl/docs/Web/JavaScript/Reference/Functions/Funkcje_strzalkowe) pozwalają na pisanie funkcji w sposób `const dodaj = (a, b) => a + b`
+- Importowanie i exportowanie opisałem w `Movie.js`, ale np. [tutaj można poczytać](https://www.geeksforgeeks.org/reactjs-importing-exporting/) o tym więcej
