@@ -1,31 +1,46 @@
 import React from 'react';
 
-// Importujemy komponenty z biblioteki React Router, których użyjemy do skonstruowania routingu
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
-import List from './List'; // Przeniesiona logika pobierania listy z App do List
+import List from './List';
 import Details from './Details';
+import NotFound from './NotFound';
+import Login from './Login';
+import Search from './Search';
+
 import './App.css';
 
 class App extends React.Component {
   render () {
     return (
-      // Komponent ReactRoutera, który okala całą aplikacje, dzięki temu wszędzie będziemy mogli używać dobrodziejst biblioteki
       <BrowserRouter>
-        {/* BrowserRouter przyjmuje tylko jedno dziecko dlatego używam <>, można oczywiście uzyć div albo innych tagów */}
-        <>
-          {/* Switch to komponent, który powoduje, że tylko jeden Route w Switchu jest wyświetlany nawet jeśli ścieżka pasuje do kilku  */}
-          <Switch>
-            {/* Route pozwala na wyrenderowanie wybranego komponentu w zależności od aktualnego adresu strony */}
-            {/*
-              Dodatkowo wspiera path-to-regexp czyli możemy używać np `/movie/:zmienna` co będzie prawidłowym adresem dla `/movie/aaa`, `movie/1234`, `movie/an21b123b`
-              później mamy do tego dostęp w renderowanym komponencie w dodawanym automatycznie propsie match
-              obiekt match posiada pole `params` w którym znajdziemy później naszą zmienną `{zmienna: aaa}`, `{zmienna: 1234}`, `{zmienna: an21b123b}`
+        {/*
+          * O ile w większości przypadków chcemy, żeby Route renderował nam zupełnie inną stronę
+          * na podstawie jakieś ścieżki to może się okazać, że pewne elementy jak np. header, nawigacja czy stopka
+          * są wspólne dla wszystkich podstron. Wtedy możemy wygodnie dodać te komponenty "obok" naszy routów.
+          * W tym przypadku poniższy
+          */}
+        <header className="topbar">
+          <div className="container">
+            <Link to="/" className="logo-link">
+              <h1 className="logo">prawie FILMWEB</h1>
+            </Link>
+            <Link to="/search" className="search-link">Wyszukiwarka</Link>
+          </div>
+        </header>
+        <Switch>
+          <Route exact={true} path="/movie/:id" component={Details} />
+          <Route exact={true} path="/" component={List} />
+          <Route exact={true} path="/search" component={Search} />
+          <Route exact={true} path="/login" component={Login} />
+          <Route component={NotFound} />
+        </Switch>
+        <footer className="footer">
+          {/* Warto zaznaczyć, że linki, które mają wychodzić na zewnątrz naszej strony robimy "normalnie"
+            * przy użyciu tagu <a />, a nie jak w przypadku linków wewnątrz strony <Link />
             */}
-            <Route path="/movie/:id" component={Details}/>
-            <Route path="/" component={List}/>
-          </Switch>
-        </>
+          <p>Poczuj mięte do Reacta! <a href="https://nativeflow.napwr.pl">KN Native Flow</a></p>
+        </footer>
       </BrowserRouter>
     )
   }
