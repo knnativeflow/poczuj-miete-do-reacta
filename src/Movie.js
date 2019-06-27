@@ -10,10 +10,15 @@ const Movie = ({
 }) => {
   return (
     <li className="movie-item">
-      <Link to={`/movie/${id}`}><h2>{title}</h2></Link>
+      <Link to={`/movie/${id}`}><h3>{title}</h3></Link>
       <p>Data: {date}</p>
       <p>Ocena: {vote}</p>
-      <button className="movie-btn" onClick={() => onDelete(id)}>Usuń</button>
+
+      {/*
+        * Taka konstrukcja pozwala nam na renderowanie warunkowe czyli
+        * wyświetl button tylko wtedy gdy onDelete istnieje
+        */}
+      {onDelete && <button className="movie-btn" onClick={() => onDelete(id)}>Usuń</button>}
     </li>
   )
 }
